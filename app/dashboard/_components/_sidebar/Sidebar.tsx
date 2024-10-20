@@ -4,7 +4,7 @@ import NavItem from './NavItem'
 
 function Sidebar() {
   return (
-    <nav className='flex flex-col items-center w-[10vh] h-[90vh] bg-slate-400 py-20'>
+    <nav className='flex flex-col items-center w-1/12 h-[90vh] bg-slate-400 py-20'>
       <NavItem icon={<LuStore className='text-4xl' />} path='/dashboard'/>
       <NavItem icon={<LuTruck className='text-4xl'/>} path='/dashboard/providers'/>
       <NavItem icon={<LuWheat className='text-4xl' />} path='/dashboard/products'/>
