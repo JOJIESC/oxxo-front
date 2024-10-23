@@ -9,7 +9,7 @@ function Sidebar() {
       <NavItem icon={<LuTruck className='text-4xl'/>} path='/dashboard/providers'/>
       <NavItem icon={<LuWheat className='text-4xl' />} path='/dashboard/products'/>
       <NavItem icon={<LuUser className='text-4xl' />} path='/dashboard/managers'/>
-      <NavItem icon={<LuUsers className='text-4xl' />} path='/dashboard/employyes'/>
+      <NavItem icon={<LuUsers className='text-4xl' />} path='/dashboard/employees'/>
     </nav>
   )
 }
