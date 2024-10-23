@@ -5,7 +5,7 @@ export default function DashboardPage({searchParams}: {searchParams: { [key: str
     return (
         <>
             <div className="h-full w-4/12 bg-red-100">
-                {/* <EmployeesLocation store ={searchParams?.store}/> */}
+                <EmployeesLocation store={searchParams?.store}/>
             </div>
         </>
     );
