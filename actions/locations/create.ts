@@ -1,9 +1,8 @@
 "use server";
-import axios from "axios";
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHelpers";
+import { revalidateTag } from "next/cache";
 export async function createLocation(formData: FormData) {
-  console.log("Form Data: " + formData);
   let location: any = {};
   let locationLatLng = [0, 0];
   for (const key of formData.keys()) {
@@ -20,18 +19,14 @@ export async function createLocation(formData: FormData) {
   }
   location.locationLatLng = locationLatLng;
   try {
-    const response = axios.post(
-      `${API_URL}/locations`,
-      {
-        ...location,
+    const response = fetch(`${API_URL}/locations`, {
+      body: JSON.stringify(location),
+      method: "POST",
+      headers: {
+        ...authHeaders(),
       },
-      {
-        headers: {
-          ...authHeaders(),
-        },
-      }
-    );
-    console.log((await response).data);
+    });
+    if ((await response).status === 201) revalidateTag("dashboard:locations");
   } catch (error: any) {
     if (error.response) {
       console.error("Error:", error.response.status, error.response.data);

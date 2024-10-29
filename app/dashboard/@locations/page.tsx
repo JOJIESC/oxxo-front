@@ -1,5 +1,4 @@
-import axios from 'axios';
-import { API_URL, TOKEN_NAME } from '@/constants';
+import { API_URL } from '@/constants';
 import { Location } from '@/entities';
 import SelectLocation from './_components/SelectLocation';
 import LocationCard from './_components/LocationCard';
@@ -7,13 +6,18 @@ import FormNewLocation from './_components/FormNewLocation';
 import DeleteLocationButton from './_components/DeleteLocationButton';
 import { authHeaders } from '@/helpers/authHelpers';
 const LocationsPage = async ({searchParams}: {searchParams: { [key: string]: string | string[] | undefined }}) => {
-    let {data} = await axios.get<Location[]>(`${API_URL}/locations`,
+    let resposne = await fetch(`${API_URL}/locations`,
         {
             headers:{
                 ...authHeaders()
+            },
+            method: "GET",
+            next: {
+                tags:["dashboard:locations"]
             }
         }
     )
+    let data: Location[] = await resposne.json()
     data = [
         {
             locationId: 0,
