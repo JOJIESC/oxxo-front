@@ -1,17 +1,11 @@
 "use server";
 import axios from "axios";
-import { API_URL, TOKEN_NAME } from "@/constants";
-import { cookies } from "next/headers";
-import { error } from "console";
+import { API_URL } from "@/constants";
+import { authHeaders } from "@/helpers/authHelpers";
 export async function createLocation(formData: FormData) {
   console.log("Form Data: " + formData);
   let location: any = {};
   let locationLatLng = [0, 0];
-  const token = cookies().get(TOKEN_NAME)?.value;
-  console.log("Token: " + token);
-  if (!token) {
-    return;
-  }
   for (const key of formData.keys()) {
     if (key.startsWith("$")) continue;
     const value = formData.get(key);
@@ -33,7 +27,7 @@ export async function createLocation(formData: FormData) {
       },
       {
         headers: {
-          Authorization: `Bearer ${token}`,
+          ...authHeaders(),
         },
       }
     );
