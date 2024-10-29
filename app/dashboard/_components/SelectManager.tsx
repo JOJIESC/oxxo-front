@@ -8,7 +8,7 @@ interface SelectManagerProps {
 }
 export default function SelectManager({managers,locations,defaultManager} : SelectManagerProps) {
     const disablesKeys = locations.map((location:Location)=> {
-        return location.manager?.managerId
+        if ( location.manager?.managerId !==  defaultManager) return location.manager?.managerId
     }).filter((managerId) => managerId !== undefined)
     return (
         <Select defaultSelectedKeys={defaultManager !== undefined ? [defaultManager] : []} label="Selecciona un manager" name='manager' disabledKeys={disablesKeys}>

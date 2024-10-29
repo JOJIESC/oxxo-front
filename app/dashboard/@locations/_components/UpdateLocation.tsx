@@ -1,19 +1,19 @@
 
 'use client'
-import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Button, useDisclosure} from "@nextui-org/react";
-import {LuPenTool} from "react-icons/lu";
+import {Modal, ModalContent, ModalBody, Button, useDisclosure} from "@nextui-org/react";
+import {LuPencil} from "react-icons/lu";
 
-export default function UpdateLocation({children}: {children: React.ReactNode}) {
+export default function UpdateLocation({children,store}: {children: React.ReactNode,store : string | string[] | undefined}) {
   const {isOpen, onOpen, onOpenChange} = useDisclosure();
 
+    if(!store) return null
   return (
     <>
-      <Button onPress={onOpen} color="primary"><LuPenTool size="20"/></Button>
-      <Modal isOpen={isOpen} onOpenChange={onOpenChange}>
+      <Button onPress={onOpen} color="primary"><LuPencil size="20"/></Button>
+      <Modal className="bg-orange-400" isOpen={isOpen} onOpenChange={onOpenChange}>
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
               <ModalBody>
                 {children}
               </ModalBody>
