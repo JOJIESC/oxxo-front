@@ -2,6 +2,8 @@
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHelpers";
 import { revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
+import { Location } from "@/entities";
 export async function createLocation(formData: FormData) {
   let location: any = {};
   let locationLatLng = [0, 0];
@@ -19,14 +21,19 @@ export async function createLocation(formData: FormData) {
   }
   location.locationLatLng = locationLatLng;
   try {
-    const response = fetch(`${API_URL}/locations`, {
+    const response = await fetch(`${API_URL}/locations`, {
       body: JSON.stringify(location),
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
         ...authHeaders(),
       },
     });
-    if ((await response).status === 201) revalidateTag("dashboard:locations");
+    const { locationId }: Location = await response.json();
+    if ((await response).status === 201) {
+      revalidateTag("dashboard:locations");
+      redirect(`dashboard/?store=${locationId}`);
+    }
   } catch (error: any) {
     if (error.response) {
       console.error("Error:", error.response.status, error.response.data);
