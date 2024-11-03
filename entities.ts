@@ -29,4 +29,19 @@ export interface Manager {
   user: any;
 }
 
+export interface Provider {
+  providerId: string;
+  providerName: string;
+  providerEmail: string;
+  providerPhoneNumber: string;
+  products: Product[];
+}
+
+export interface Product {
+  productId: string;
+  productName: string;
+  productPrice: number;
+  countSeal: number;
+  provider: Provider;
+}
 // export interface Region {}
