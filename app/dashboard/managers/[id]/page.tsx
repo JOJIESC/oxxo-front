@@ -1,8 +1,9 @@
 import { API_URL } from "@/constants"
-import { Card, CardHeader, CardBody,Divider } from "@nextui-org/react"
+import { Card } from "@nextui-org/react"
 import { Manager } from "@/entities"
 import { authHeaders } from "@/helpers/authHelpers"
 import ManagerCard from "../[id]/_components/ManagerCard"
+import DeleteManagerButton from "./_components/DeleteManagerButton"
 
 export default async function ManagerPage({params,}:{params: {id:string}})
 {
@@ -20,8 +21,11 @@ export default async function ManagerPage({params,}:{params: {id:string}})
     )
     const data: Manager = await response.json()
     return (
-            <div>
+            <div className="flex flex-col flex-grow-0 items-center justify-center">
                 <ManagerCard manager={data}/>
+                <div className="bg-gray-300 shadow-sm rounded-md px-10 py-2">
+                <DeleteManagerButton managerId={data.managerId}/>
+                </div>
             </div>
     )
 }

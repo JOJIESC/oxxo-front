@@ -4,7 +4,7 @@ import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHelpers";
 import { revalidatePath, revalidateTag } from "next/cache";
 
-export default async function createManager(
+export default async function updateManager(
   managerId: string,
   formData: FormData
 ) {
