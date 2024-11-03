@@ -14,7 +14,7 @@ function ProviderCard({ provider }: { provider: Provider }) {
         </p>
         {provider.products.length < 0 ? (
           <p>
-            Tiene: <b>{provider.products.length}</b> productos
+            Tiene: <b>{provider?.products?.length}</b> productos
           </p>
         ) : (
           <p>No tiene productos</p>
