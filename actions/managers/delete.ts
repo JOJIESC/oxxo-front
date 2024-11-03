@@ -21,7 +21,7 @@ export default async function deleteManager(
     },
   });
   console.log(response.status);
-  if (response.status === 200) {
+  if (response.status === 303) {
     revalidateTag("dashboard:managers");
     redirect("/dashboard/managers");
   }
