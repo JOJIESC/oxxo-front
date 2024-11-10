@@ -3,6 +3,7 @@
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHelpers";
 import { revalidatePath, revalidateTag } from "next/cache";
+import { redirect } from "next/navigation";
 
 export default async function createProvider(formData: FormData) {
   let provider: any = {};
@@ -18,5 +19,8 @@ export default async function createProvider(formData: FormData) {
       "content-type": "application/json",
     },
   });
-  if (response.status === 201) revalidateTag("dashboard:providers");
+  if (response.status === 201) {
+    revalidateTag("dashboard:providers");
+    redirect("/dashboard/providers");
+  }
 }

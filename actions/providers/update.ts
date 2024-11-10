@@ -13,8 +13,8 @@ export default async function updateProvider(
     provider[key] = formData.get(key);
   }
 
-  const response = await fetch(`${API_URL}/providers`, {
-    method: "POST",
+  const response = await fetch(`${API_URL}/providers/${providerId}`, {
+    method: "PATCH",
     body: JSON.stringify(provider),
     headers: {
       ...authHeaders(),

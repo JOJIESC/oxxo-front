@@ -6,9 +6,9 @@ import {
   Button,
   useDisclosure,
 } from "@nextui-org/react";
-import { LuPlus } from "react-icons/lu";
+import { LuTrash } from "react-icons/lu";
 
-export default function CreateProvider({
+export default function DeleteProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -17,18 +17,21 @@ export default function CreateProvider({
 
   return (
     <>
-      <Button onPress={onOpen} color="primary">
-        <LuPlus size="20" />
+      <Button onPress={onOpen} color="danger">
+        <LuTrash size="20" />
       </Button>
       <Modal
-        className="bg-orange-400"
+        className="bg-orange-400 flex flex-col items-center"
         isOpen={isOpen}
         onOpenChange={onOpenChange}
       >
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalBody>{children}</ModalBody>
+              <ModalBody>
+                {children}
+                <Button onPress={onClose}>Cancelar</Button>
+              </ModalBody>
             </>
           )}
         </ModalContent>

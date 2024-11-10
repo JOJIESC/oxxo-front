@@ -1,10 +1,12 @@
 import { Provider } from "@/entities";
 import { Input, Button } from "@nextui-org/react";
 import updateProvider from "@/actions/providers/update";
+import DeleteProviderButton from "./DeleteButton";
+import DeleteProvider from "./DeleteProvider";
 
 function FormUpdateProvider({ provider }: { provider: Provider }) {
   const { providerId } = provider;
-  const updateProviderWithId = updateProvider.bind(null, provider.providerId);
+  const updateProviderWithId = updateProvider.bind(null, providerId);
   return (
     <form action={updateProviderWithId} className="flex flex-wrap gap-3 ml-10">
       <h1 className="text-2xl">Actualizar proveedor</h1>
@@ -29,6 +31,12 @@ function FormUpdateProvider({ provider }: { provider: Provider }) {
       <Button type="submit" color="primary">
         Actualizar
       </Button>
+      <DeleteProvider>
+        <h1 className="text-2xl text-white text-center">
+          ¿ Estas seguro de eliminar al proveedor {provider.providerName} ?
+        </h1>
+        <DeleteProviderButton provider={provider} />
+      </DeleteProvider>
     </form>
   );
 }
