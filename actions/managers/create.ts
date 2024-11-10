@@ -2,7 +2,7 @@
 
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHelpers";
-import { revalidatePath, revalidateTag } from "next/cache";
+import { revalidateTag } from "next/cache";
 
 export default async function createManager(formData: FormData) {
   let manager: any = {};

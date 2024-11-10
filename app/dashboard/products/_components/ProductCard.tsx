@@ -2,7 +2,7 @@ import { Card, CardBody, CardHeader, Divider } from "@nextui-org/react";
 import { Product } from "@/entities";
 export default function ProductCard({ product }: { product: Product }) {
   return (
-    <Card className="hover:scale-90">
+    <Card className="max-w-[350px] mb-2">
       <CardHeader>{product.productName}</CardHeader>
       <Divider />
       <CardBody>
@@ -14,6 +14,9 @@ export default function ProductCard({ product }: { product: Product }) {
         </p>
         <p>
           Stock: <b>{product.countSeal}</b>
+        </p>
+        <p>
+          Proveedor: <b>{product.provider.providerName}</b>
         </p>
       </CardBody>
     </Card>
