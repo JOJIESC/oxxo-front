@@ -19,6 +19,7 @@ function SelectStore({
   return (
     <Select
       name="location"
+      label="location"
       defaultSelectedKeys={defaultStore ? [String(defaultStore)] : undefined}
       disabledKeys={disabledSotres}
     >
