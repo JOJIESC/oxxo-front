@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.688.0",
+    "@nestjs/common": "^10.4.7",
     "@nextui-org/react": "^2.4.8",
     "framer-motion": "^11.11.8",
     "next": "14.2.15",

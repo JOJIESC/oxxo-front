@@ -21,6 +21,10 @@ function Login() {
       const response = await fetch(`${API_URL}/auth/login`, {
         method: "POST",
         body: JSON.stringify(authData),
+        headers: {
+          "content-type": "application/json",
+        },
+        cache: "no-cache",
         credentials: "include",
       });
       console.log(await response);
