@@ -1,10 +1,11 @@
-import React from "react";
 import { LuStore, LuTruck, LuUser, LuUsers, LuWheat } from "react-icons/lu";
 import NavItem from "./NavItem";
+import * as jose from "jose";
+import { getUserRolesFromToken } from "@/constants";
 
-function Sidebar() {
+export default function Sidebar() {
   return (
-    <nav className="flex flex-col items-center w-1/12 h-[90vh] bg-slate-400 py-20">
+    <nav className="w-1/12 min-w-[8.3333%] h-[90vh] bg-orange-200 flex flex-col items-center py-20 justify-center gap-10">
       <NavItem icon={<LuStore className="text-4xl" />} path="/dashboard" />
       <NavItem
         icon={<LuTruck className="text-4xl" />}
@@ -25,5 +26,3 @@ function Sidebar() {
     </nav>
   );
 }
-
-export default Sidebar;
