@@ -26,7 +26,7 @@ export interface Manager {
   managerEmail: string;
   managerPhoneNumber: string;
   location: Location;
-  user: any;
+  user: User;
 }
 
 export interface Provider {
@@ -45,3 +45,12 @@ export interface Product {
   provider: Provider;
 }
 // export interface Region {}
+
+export interface User {
+  userId: string;
+  userEmail: string;
+  userPassword: string;
+  userRoles: string[];
+  manager: Manager;
+  employee: Employee;
+}

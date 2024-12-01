@@ -1,29 +1,28 @@
 "use client";
-
 import { Location } from "@/entities";
 import { Select, SelectItem } from "@nextui-org/react";
-
-function SelectStore({
-  store,
+export default function SelectStore({
+  stores,
   defaultStore,
 }: {
-  store: Location[];
-  defaultStore: number;
+  stores: Location[];
+  defaultStore?: number;
 }) {
-  const disabledSotres = store
+  const disabledStores = stores
     .map((store: Location) => {
-      if (store.manager !== undefined && store.locationId !== defaultStore)
+      if (store.manager !== undefined && store.locationId !== defaultStore) {
         return String(store.locationId);
+      }
     })
     .filter((storeId) => storeId !== undefined);
   return (
     <Select
+      label="Tienda"
       name="location"
-      label="location"
       defaultSelectedKeys={defaultStore ? [String(defaultStore)] : undefined}
-      disabledKeys={disabledSotres}
+      disabledKeys={disabledStores}
     >
-      {store.map((store: Location) => (
+      {stores.map((store: Location) => (
         <SelectItem key={String(store.locationId)}>
           {store.locationName}
         </SelectItem>
@@ -31,5 +30,3 @@ function SelectStore({
     </Select>
   );
 }
-
-export default SelectStore;

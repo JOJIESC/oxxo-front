@@ -16,7 +16,7 @@ export default function ListEmployees({
   console.log(locations);
   return (
     <div className="">
-      {location && (
+      {locations && (
         <Select
           label="Tiendas"
           defaultSelectedKeys={[]}

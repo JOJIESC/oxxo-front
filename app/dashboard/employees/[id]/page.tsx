@@ -1,8 +1,8 @@
 import { API_URL } from "@/constants";
 import { authHeaders } from "@/helpers/authHelpers";
 import { Employee } from "@/entities";
-// import FormUpdateEmployee from "./_components/FormUpdateEmployee";
-// import EmployeeDataCard from "./_components/EmployeeDataCard";
+import FormUpdateEmployee from "./_components/FormUpdateEmployee";
+import EmployeeDataCard from "./_components/EmployeeDataCard";
 
 export default async function EmployeePage({
   params,
@@ -15,10 +15,11 @@ export default async function EmployeePage({
     },
   });
   const employee: Employee = await responseEmployee.json();
+  console.log(employee);
   return (
     <div className="w-full h-[90vh] flex flex-row items-center justify-center">
-      {/* <EmployeeDataCard employee={employee}/>
-    <FormUpdateEmployee employee={employee} /> */}
+      <EmployeeDataCard employee={employee} />
+      <FormUpdateEmployee employee={employee} />
     </div>
   );
 }
